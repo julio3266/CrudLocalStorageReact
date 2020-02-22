@@ -10,7 +10,7 @@ import {
 	Button
 } from "@material-ui/core";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import CadastroService from "../Storage/cadastroService";
 
 import dataTypesBanks from "../dadosJson/bancos.json";
@@ -80,13 +80,24 @@ class Cadastro extends React.Component {
 			this.setState({ errors: errors });
 		}
 	};
+	componentDidMount() {
+	 const id = this.props.match.params.id
 
+	 if(id) {
+		const resultado =
+		 this.dados.getDados().filter( dado => dado.id === id )
+		 if(resultado.length === 1){
+			const dadoEncontrado = resultado[0]
+			this.setState({...dadoEncontrado})
+		 }
+	 }
+	}
 	render() {
 		const { typesBanks, typesExpenses } = this.state;
 
 		return (
 			<>
-				<Grid
+				<Grid component={Paper}
 					spacing={1}
 					style={{ marginTop: 100 }}
 					container
@@ -195,4 +206,4 @@ class Cadastro extends React.Component {
 	}
 }
 
-export default Cadastro;
+export default withRouter(Cadastro) ;
