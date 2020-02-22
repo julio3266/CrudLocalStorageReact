@@ -8,7 +8,7 @@ export default function Routes(){
     return(
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/cadastro' component={Cadastro} />
+            <Route exact path='/cadastro/:id?' component={Cadastro} />
             <Route exact path='*' component={NotFound} />
         </Switch>
     )

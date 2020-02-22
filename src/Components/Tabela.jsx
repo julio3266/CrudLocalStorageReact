@@ -13,8 +13,8 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import CadastroService from "../Storage/cadastroService";
-
-export default class Tabela extends Component {
+import { withRouter } from 'react-router-dom'
+ class Tabela extends Component {
 	state = {
 		dados: []
 	};
@@ -28,12 +28,15 @@ export default class Tabela extends Component {
 		const dados = this.dados.getDados();
 		this.setState({ dados });
 	}
+	preparaEditar = (id) => {
+		console.log('id para editar', id)
+		this.props.history.push(`/cadastro/${id}`)
+	}
 	
 	render() {
 		return (
-			
-		<TableContainer size="small">	
-			<Table size="small" style={{ marginTop: 30,  flexGrow: 2 }} component={Paper} >
+		<TableContainer>	
+			<Table  style={{ marginTop: 30 }} component={Paper} >
 					<TableHead>
 						<TableRow>
 							<TableCell  size="medium" align="center">
@@ -90,7 +93,7 @@ export default class Tabela extends Component {
 												<DeleteIcon  fontSize="small" />
 											</IconButton>
 											<IconButton aria-label="edit">
-												<EditIcon fontSize="small" />
+												<EditIcon onClick={() => this.preparaEditar(dado.id)} fontSize="small" />
 											</IconButton>
 										</TableCell>
 									</TableRow>
@@ -104,3 +107,5 @@ export default class Tabela extends Component {
 		);
 	}
 }
+
+export default withRouter(Tabela)
