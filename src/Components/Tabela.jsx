@@ -5,8 +5,11 @@ import {
 	TableHead,
 	TableCell,
 	TableBody,
-	TableRow
+	TableRow,
+	IconButton
 } from "@material-ui/core";
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import CadastroService from "../Storage/cadastroService";
 
 export default class Tabela extends Component {
@@ -56,7 +59,14 @@ export default class Tabela extends Component {
 									<TableCell size="medium" align="center">
 										{dado.data}
 									</TableCell>
-									<TableCell size="medium" align="center"></TableCell>
+									<TableCell size="medium" align="center">
+										<IconButton aria-label="delete" >
+											<DeleteIcon fontSize="small" />
+										</IconButton>
+										<IconButton aria-label="edit">
+											<EditIcon fontSize="small" />
+										</IconButton>
+									</TableCell>
 								</TableRow>
 							);
 						})}
