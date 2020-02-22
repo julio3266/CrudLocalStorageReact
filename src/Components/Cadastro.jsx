@@ -66,6 +66,7 @@ class Cadastro extends React.Component {
 
 	onSubmit = event => {
 		const dados = {
+			id: this.state.id,
 			banco: this.state.banco,
 			tipo: this.state.tipo,
 			data: this.state.data,
@@ -84,22 +85,7 @@ class Cadastro extends React.Component {
 		const { typesBanks, typesExpenses } = this.state;
 
 		return (
-			<Paper elevation={3}>
-				{this.state.msgSucess && (
-					<Alert style={{ marginTop: 20 }} severity="success">
-						<AlertTitle>Cadastro Efetuado</AlertTitle>
-						Seu cadastro foi realizado com sucesso!
-					</Alert>
-				)}
-				{this.state.errors.length > 0 &&
-					this.state.errors.map(msg => {
-						return (
-							<Alert severity="error">
-								<AlertTitle>Erro</AlertTitle> {msg}
-							</Alert>
-						);
-					})}
-				<div></div>
+			<>
 				<Grid
 					spacing={1}
 					style={{ marginTop: 100 }}
@@ -108,7 +94,33 @@ class Cadastro extends React.Component {
 					justify="center"
 					alignItems="center"
 				>
-					<Grid item md={12}>
+							{this.state.msgSucess && (
+							<Alert style={{ marginTop: 20 }} severity="success">
+								<AlertTitle>Cadastro Efetuado</AlertTitle>
+								Seu cadastro foi realizado com sucesso!
+							</Alert>
+						)}
+						{this.state.errors.length > 0 &&
+							this.state.errors.map(msg => {
+								return (
+									<Alert severity="error">
+										<AlertTitle>Erro</AlertTitle> {msg}
+									</Alert>
+								);
+							})}
+					
+					<Grid item xs={12}>
+						
+						<TextField 
+								style={style}
+								onChange={this.onChange}
+								name="id"
+								value={this.state.id}
+								label="id"
+								variant="outlined"
+							/>
+						
+						
 						<FormControl style={style} variant="outlined">
 							<InputLabel>Banco</InputLabel>
 							<Select
@@ -124,6 +136,7 @@ class Cadastro extends React.Component {
 									))}
 							</Select>
 						</FormControl>
+						
 
 						<FormControl style={style} variant="outlined">
 							<InputLabel>Tipo</InputLabel>
@@ -172,9 +185,12 @@ class Cadastro extends React.Component {
 								Cancelar
 							</Link>
 						</Button>
-					</Grid>
+					
+						</Grid>
 				</Grid>
-			</Paper>
+				</>
+				
+			
 		);
 	}
 }

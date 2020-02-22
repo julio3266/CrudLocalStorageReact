@@ -8,9 +8,13 @@ export function ErroValidacao(errors){
 export default class cadastroService{
     validar = (dado) => {
         const errors = []
+        if(!dado.id){
+            errors.push('Campo ID obrigatório!')
+        }
         if(!dado.banco){
             errors.push('Campo banco obrigatório!')
         }
+       
         if(!dado.tipo){
             errors.push('Campo tipo obrigatório!')
         }
@@ -31,7 +35,7 @@ export default class cadastroService{
         const dados = localStorage.getItem(DADOS)
         return JSON.parse(dados)
     }
-
+   
     salvar = (dado) => {
         this.validar(dado)
 

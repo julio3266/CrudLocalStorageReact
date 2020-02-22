@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
 	return (
 		<div>
-			{/*<AppBar position="state"> */}
-			{/** comentei por que está dando erro no console */}
-			<AppBar position="state">
+			<AppBar position="static">
 				<Toolbar>
 					<Typography style={{ flexGrow: 1 }} variant="h6">
 						Finances
