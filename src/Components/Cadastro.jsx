@@ -12,7 +12,6 @@ import {
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { Link, withRouter } from "react-router-dom";
 import CadastroService from "../Storage/cadastroService";
-
 import dataTypesBanks from "../dadosJson/bancos.json";
 import dataTypesExpenses from "../dadosJson/tipo_despesa.json";
 
@@ -66,7 +65,6 @@ class Cadastro extends React.Component {
 
 	onSubmit = event => {
 		const dados = {
-			id: this.state.id,
 			banco: this.state.banco,
 			tipo: this.state.tipo,
 			data: this.state.data,
@@ -80,18 +78,7 @@ class Cadastro extends React.Component {
 			this.setState({ errors: errors });
 		}
 	};
-	componentDidMount() {
-	 const id = this.props.match.params.id
-
-	 if(id) {
-		const resultado =
-		 this.dados.getDados().filter( dado => dado.id === id )
-		 if(resultado.length === 1){
-			const dadoEncontrado = resultado[0]
-			this.setState({...dadoEncontrado})
-		 }
-	 }
-	}
+	
 	render() {
 		const { typesBanks, typesExpenses } = this.state;
 
@@ -121,16 +108,7 @@ class Cadastro extends React.Component {
 							})}
 					
 					<Grid item xs={12}>
-						
-						<TextField 
-								style={style}
-								onChange={this.onChange}
-								name="id"
-								value={this.state.id}
-								label="id"
-								variant="outlined"
-							/>
-						
+					
 						
 						<FormControl style={style} variant="outlined">
 							<InputLabel>Banco</InputLabel>

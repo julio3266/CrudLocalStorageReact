@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-	Grid,
 	Paper,
 	Table,
 	TableHead,
@@ -28,20 +27,14 @@ import { withRouter } from 'react-router-dom'
 		const dados = this.dados.getDados();
 		this.setState({ dados });
 	}
-	preparaEditar = (id) => {
-		console.log('id para editar', id)
-		this.props.history.push(`/cadastro/${id}`)
-	}
-	
+
 	render() {
 		return (
 		<TableContainer>	
 			<Table  style={{ marginTop: 30 }} component={Paper} >
 					<TableHead>
 						<TableRow>
-							<TableCell  size="medium" align="center">
-								id
-							</TableCell>
+							
 							<TableCell size="medium" align="center">
 								Banco
 							</TableCell>
@@ -68,9 +61,7 @@ import { withRouter } from 'react-router-dom'
 							this.state.dados.map((dado, index) => {
 								return (
 									<TableRow key={dado.banco + index}>
-										<TableCell size="medium" align="center">
-											{dado.id}
-										</TableCell>
+									
 										<TableCell size="medium" align="center">
 											{dado.banco}
 										</TableCell>
