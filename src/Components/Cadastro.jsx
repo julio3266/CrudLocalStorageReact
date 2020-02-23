@@ -65,6 +65,7 @@ class Cadastro extends React.Component {
 
 	onSubmit = event => {
 		const dados = {
+			id: this.state.id,
 			banco: this.state.banco,
 			tipo: this.state.tipo,
 			data: this.state.data,
@@ -81,7 +82,7 @@ class Cadastro extends React.Component {
 	
 	render() {
 		const { typesBanks, typesExpenses } = this.state;
-
+		
 		return (
 			<>
 				<Grid component={Paper}
@@ -109,7 +110,14 @@ class Cadastro extends React.Component {
 					
 					<Grid item xs={12}>
 					
-						
+					<TextField
+							style={style}
+							onChange={this.onChange}
+							name="id"
+							value={this.state.id}
+							label="ID*"
+							variant="outlined"
+						/>
 						<FormControl style={style} variant="outlined">
 							<InputLabel>Banco</InputLabel>
 							<Select
@@ -142,6 +150,8 @@ class Cadastro extends React.Component {
 									))}
 							</Select>
 						</FormControl>
+						
+
 						<TextField
 							style={style}
 							onChange={this.onChange}
@@ -150,6 +160,7 @@ class Cadastro extends React.Component {
 							label="Data"
 							variant="outlined"
 						/>
+						
 						<TextField
 							style={style}
 							onChange={this.onChange}
@@ -159,6 +170,8 @@ class Cadastro extends React.Component {
 							label="Valor"
 							variant="outlined"
 						/>
+						
+						
 					</Grid>
 					<Grid item md={6}>
 						<Button

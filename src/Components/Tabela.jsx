@@ -34,7 +34,9 @@ import { withRouter } from 'react-router-dom'
 			<Table  style={{ marginTop: 30 }} component={Paper} >
 					<TableHead>
 						<TableRow>
-							
+							<TableCell size="medium" align="center">
+								Id
+							</TableCell>
 							<TableCell size="medium" align="center">
 								Banco
 							</TableCell>
@@ -61,7 +63,9 @@ import { withRouter } from 'react-router-dom'
 							this.state.dados.map((dado, index) => {
 								return (
 									<TableRow key={dado.banco + index}>
-									
+									<TableCell size="medium" align="center">
+											{dado.id}
+										</TableCell>
 										<TableCell size="medium" align="center">
 											{dado.banco}
 										</TableCell>
@@ -84,7 +88,7 @@ import { withRouter } from 'react-router-dom'
 												<DeleteIcon  fontSize="small" />
 											</IconButton>
 											<IconButton aria-label="edit">
-												<EditIcon onClick={() => this.preparaEditar(dado.id)} fontSize="small" />
+												<EditIcon  fontSize="small" />
 											</IconButton>
 										</TableCell>
 									</TableRow>

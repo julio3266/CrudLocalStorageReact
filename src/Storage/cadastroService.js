@@ -8,6 +8,9 @@ export function ErroValidacao(errors){
 export default class cadastroService{
     validar = (dado) => {
         const errors = []
+        if(!dado.id){
+            errors.push('Campo banco obrigatório!')
+        }
         if(!dado.banco){
             errors.push('Campo banco obrigatório!')
         }
