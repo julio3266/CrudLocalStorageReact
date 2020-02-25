@@ -9,6 +9,7 @@ import {
 	Select,
 	Button
 } from "@material-ui/core";
+import TextMaskCustom from '../Components/TextMaskCustom'
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { Link, withRouter } from "react-router-dom";
 import CadastroService from "../Storage/cadastroService";
@@ -21,6 +22,8 @@ const style = {
 	margin: 10,
 	textAlign: "center"
 };
+
+
 class Cadastro extends React.Component {
 	state = {
 		banco: "",
@@ -30,9 +33,11 @@ class Cadastro extends React.Component {
 		msgSucess: false,
 		errors: [],
 		typesBanks: [],
-		typesExpenses: []
+		typesExpenses: [], 
+		textmask: ' / / '
 	};
 
+  
 	constructor() {
 		super();
 		this.dados = new CadastroService();
@@ -69,7 +74,8 @@ class Cadastro extends React.Component {
 			banco: this.state.banco,
 			tipo: this.state.tipo,
 			data: this.state.data,
-			valor: this.state.valor
+			valor: this.state.valor,
+			textmask: this.state.textmask
 		};
 		try {
 			this.dados.salvar(dados);
@@ -79,11 +85,17 @@ class Cadastro extends React.Component {
 			this.setState({ errors: errors });
 		}
 	};
+	handleChange = nomeDoCampo=> event => {
+		this.setState({
+			[nomeDoCampo]: event.target.value,
+		});
+	  };
 	
 	render() {
 		const { typesBanks, typesExpenses } = this.state;
 		
 		return (
+		
 			<>
 				<Grid component={Paper}
 					spacing={1}
@@ -159,6 +171,12 @@ class Cadastro extends React.Component {
 							value={this.state.data}
 							label="Data"
 							variant="outlined"
+							InputProps={{
+								inputComponent: TextMaskCustom,
+								value:this.state.data,
+								onKeyUp: this.handleChange('textmask'),
+							  }}
+							
 						/>
 						
 						<TextField
