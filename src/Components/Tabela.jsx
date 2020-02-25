@@ -27,6 +27,10 @@ import { withRouter } from 'react-router-dom'
 		const dados = this.dados.getDados();
 		this.setState({ dados });
 	}
+	delete = (id) => {
+	const dados = this.dados.delete(id)
+	this.setState({dados})
+	}
 
 	render() {
 		return (
@@ -85,7 +89,7 @@ import { withRouter } from 'react-router-dom'
 										
 										<TableCell size="medium" align="center">
 											<IconButton aria-label="delete" >
-												<DeleteIcon  fontSize="small" />
+												<DeleteIcon onClick={() => this.delete(dado.id)}  fontSize="small" />
 											</IconButton>
 											<IconButton aria-label="edit">
 												<EditIcon  fontSize="small" />

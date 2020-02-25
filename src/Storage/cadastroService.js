@@ -35,6 +35,24 @@ export default class cadastroService{
         const dados = localStorage.getItem(DADOS)
         return JSON.parse(dados)
     }
+    obterIndex = (id) => {
+        let index = null;
+        this.getDados().forEach( (dado, i) => {
+            if(dado.id === id){
+                index = i;
+            }
+        })
+        return index;
+    }
+    delete = (id) => {
+        const index = this.obterIndex(id)
+        if(index !== null){
+            const dados = this.getDados()
+            dados.splice(index, 1)
+            localStorage.setItem(DADOS, JSON.stringify(dados) )
+            return dados
+        }
+    }
    
     salvar = (dado) => {
         this.validar(dado)
