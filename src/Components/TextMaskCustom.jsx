@@ -2,7 +2,8 @@ import React from 'react';
 import MaskedInput from 'react-text-mask';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
-import TextField from '@material-ui/core/TextField'
+
+
 
 const styles = ({
     container: {
@@ -25,6 +26,8 @@ const styles = ({
         placeholderChar={'\u2000'}
         showMask
       />
+      
+      
     );
   }
   
@@ -33,16 +36,14 @@ const styles = ({
   };
   
   class FormattedInputs extends React.Component {
-    state = {
-      textmask: '1  /    /    ',
-    };
+   
   
    
     render() {
       const { classes } = this.props;
       return (
         <div className={classes.container}>
-          
+        
         </div>
       );
     }

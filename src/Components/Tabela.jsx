@@ -8,6 +8,7 @@ import {
 	TableRow,
 	IconButton,
 	TableContainer,
+	Grid
 } from "@material-ui/core";
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -34,9 +35,12 @@ import { withRouter } from 'react-router-dom'
 
 	render() {
 		return (
+			<Grid container>
+
+		<Grid item sm={12}>
 		<TableContainer>	
-			<Table  style={{ marginTop: 30 }} component={Paper} >
-					<TableHead>
+			<Table >
+					<TableHead >
 						<TableRow>
 							<TableCell size="medium" align="center">
 								Id
@@ -101,8 +105,8 @@ import { withRouter } from 'react-router-dom'
 					</TableBody>
 				</Table>
 			</TableContainer>
-			
-			
+			</Grid>
+			</Grid>
 		);
 	}
 }
